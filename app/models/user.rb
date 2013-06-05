@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 
   validates :email, :uniqueness => { :case_sensitive => false }, :format => /\w+@\w+\.\w{2,4}/
 
-  validates :username, :uniqueness  => { :case_sensitive => false }
+  validates :username, :uniqueness  => { :case_sensitive => false }, :length => {:minimum => 4}
+  validates :password, :length => {:minimum => 6}
 
   validates_confirmation_of :password
 
