@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :username, :email, :password_digest, :image
   mount_uploader :image, ImageUploader
-  
+
   has_secure_password
 
   has_many :questions
@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 
   validates :email, :uniqueness => { :case_sensitive => false }, :format => /\w+@\w+\.\w{2,4}/
 
-  validates :username, :uniqueness  => { :case_sensitive => false }
+  validates :username, :uniqueness  => { :case_sensitive => false }, :length => {:minimum => 1}
+  validates :password, :length => {:minimum => 1}
 
   validates_confirmation_of :password
 
