@@ -9,14 +9,14 @@ class SessionController < ApplicationController
     user = User.find_by_email(params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       session[:current_user_id] = user.id
-      flash[:succes] = "You successfully logged in!"
+      flash[:success] = "You successfully logged in!"
       redirect_to user
     end
-    flash.now[:error] = "Unsuccessful login attempt"
-    render 'new'
+    flash[:error] = "Unsuccessful login attempt!"
+    redirect_to root_url
   end
   
-  def destory
+  def destroy
     session[:current_user_id] = nil
     flash[:success] = "You successfully logged out!"
     redirect_to login_url
