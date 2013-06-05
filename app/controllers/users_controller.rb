@@ -16,8 +16,8 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
   def show
-    @user = User.find(session[:current_user_id])
+    @user = User.find(params[:id])
   end
 end
