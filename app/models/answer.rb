@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :text
+  attr_accessible :text, :question
 
   belongs_to :question
   belongs_to :user
