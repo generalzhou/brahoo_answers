@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :username, :email, :password_digest
+  attr_accessible :username, :email, :password_digest, :image
 
   has_secure_password
 
