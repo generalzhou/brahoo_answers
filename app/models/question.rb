@@ -9,7 +9,7 @@ class Question < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :votes, :as => :votable
 
-  has_one :best_answer, :class_name => "Question", :foreign_key => "best_answer_id"
+  belongs_to :best_answer, :class_name => "Answer", :foreign_key => "best_answer_id"
 
   validates_presence_of :title
 
