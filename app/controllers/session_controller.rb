@@ -11,13 +11,14 @@ class SessionController < ApplicationController
       session[:current_user_id] = user.id
       flash[:success] = "You successfully logged in!"
       redirect_to user
+    else
+      flash[:error] = "Unsuccessful login attempt!"
+      redirect_to root_url
     end
-    flash[:error] = "Unsuccessful login attempt!"
-    redirect_to root_url
   end
   
   def destroy
-    session[:current_user_id] = nil
+    session.clear
     flash[:success] = "You successfully logged out!"
     redirect_to login_url
   end
