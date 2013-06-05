@@ -15,6 +15,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
 
 gem 'jquery-rails'
