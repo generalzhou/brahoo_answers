@@ -1,0 +1,9 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
+
+<%= render "login_form" %>
+
+<h3>Or, <%= link_to "create a new account", signup_path %>.</h3>
