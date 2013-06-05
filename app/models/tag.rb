@@ -1,3 +1,7 @@
 class Tag < ActiveRecord::Base
-  # attr_accessible :title, :body
+
+  has_many :question_tags
+  has_many :questions, :through => :question_tags
+
+  attr_accessible :name
 end
