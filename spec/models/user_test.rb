@@ -37,7 +37,7 @@ describe 'User' do
     it 'should require a password >= 6 characters' do
       FactoryGirl.build(:user,
                         :password => 'brahs',
-                        :password_confirmation => '').should_not be_valid
+                        :password_confirmation => 'brahs').should_not be_valid
     end
 
   end
