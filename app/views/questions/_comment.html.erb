@@ -1,0 +1,10 @@
+<div class="form">
+  <%= form_for :comment do |f| %>
+    <div class="field">
+      <%= f.text_field :text, placeholder: "Add a comment" %>
+    </div>
+    <div class="action">
+      <%= f.submit "Comment", class: "btn" %>
+    </div>
+  <% end %>
+</div>
