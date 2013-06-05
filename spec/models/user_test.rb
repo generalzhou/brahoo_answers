@@ -8,8 +8,8 @@ describe 'User' do
       expect { FactoryGirl.create(:user) }.to change(User, :count).by(1)
     end
 
-    it 'should require username' do
-      FactoryGirl.build(:user, :username => '').should_not be_valid
+    it 'should require a username >= 4 characters' do
+      FactoryGirl.build(:user, :username => 'bro').should_not be_valid
     end
 
     it 'should require an email' do
@@ -31,12 +31,12 @@ describe 'User' do
     end
 
     it 'should require password confirmation' do
-      FactoryGirl.build(:user, :password_confirmation => 'asdf').should_not be_valid
+      FactoryGirl.build(:user, :password_confirmation => 'asdfasdf').should_not be_valid
     end
 
-    it 'should require a password of character length 1+' do
+    it 'should require a password >= 6 characters' do
       FactoryGirl.build(:user,
-                        :password => '',
+                        :password => 'brahs',
                         :password_confirmation => '').should_not be_valid
     end
 
