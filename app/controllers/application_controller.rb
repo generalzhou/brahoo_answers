@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-  
+
   protect_from_forgery
   before_filter :require_login
 
@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      redirect_to new_session_url
+      redirect_to login_path
     end
   end
 

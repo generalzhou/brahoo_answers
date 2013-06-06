@@ -6,13 +6,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params[:user])
-    if user.save
-      session[:current_user_id] = user.id
+    @user = User.new(params[:user])
+    if @user.save
+      session[:current_user_id] = @user.id
       flash[:success] = "You have signed up successfully!"
-      redirect_to user
+      redirect_to @user
     else
-      flash.now[:error] = "Unsuccessful signup attempt!"
+      flash.now[:error] = @user.errors.full_messages.first
       render :new
     end
   end
