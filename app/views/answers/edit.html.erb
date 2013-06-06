@@ -1,0 +1,10 @@
+<div class="form">
+  <%= form_for @answer do |f| %>
+    <div class="field">
+      <%= f.text_field :text %>
+    </div>
+    <div class="action">
+      <%= f.submit "Answer", class: "btn" %>
+    </div>
+  <% end %>
+</div>
