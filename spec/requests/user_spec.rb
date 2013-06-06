@@ -6,23 +6,24 @@ describe 'User' do
   context "signup" do
 
     it "logs user in and redirects to home upon successful signup" do
-      visit new_user_url
+      visit signup_path
 
       expect {
-        fill_in 'email',    with: "test@gmail.com"
-        fill_in 'password', with: "password"
-        click_button "Signup"
+        fill_in 'user_username', with: "testuser"
+        fill_in 'user_email',    with: "test@gmail.com"
+        fill_in 'user_password', with: "password"
+        fill_in 'user_password_confirmation', with: "password"
+        click_button "Sign Up"
       }.to change(User, :count).by(1)
 
-      # page.should have_content "You have signed up successfully"
-      # page.should have_content ""
+      page.should have_content "testuser"
     end
     
     it "displays errors on unsuccessful signup" do
       visit new_user_url
-      click_button "Signup"
+      click_button "Sign Up"
 
-      # page.should have_content "Error: unsuccessful signup"
+      page.should have_content "Password can't be blank"
     end
   end
 
