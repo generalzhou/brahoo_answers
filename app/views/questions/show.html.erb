@@ -8,11 +8,11 @@
 
 <p>
   Answers:
+  <ul>
   <% @question.answers.each do |answer| %>
-    <ul>
     <li><%= answer.text %></li>
-    </ul>
   <% end %>
+  </ul>
 </p>
 
 
