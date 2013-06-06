@@ -1,10 +1,8 @@
 class AnswersController < ApplicationController
 
   def create
-    answer = Answer.new
+    answer = Answer.new(params[:answer])
     answer.user = current_user
-    answer.question_id = params[:answer][:question_id]
-    answer.text = params[:answer][:text]
     if answer.save
       flash[:success] = "Your answer was posted successfully!"
     else
