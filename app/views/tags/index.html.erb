@@ -1,0 +1,9 @@
+<% Tag.all.each do |tag| %>
+  <h2>
+    <%= link_to tag.name, tag %>
+  </h2>
+  <h4>
+    <%= tag.questions.count %> Questions
+  </h4>
+<% end %>
+

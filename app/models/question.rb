@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :title, :text, :user, :best_answer_id
+  attr_accessible :title, :text, :user, :best_answer_id, :tags, :tag_ids
 
   belongs_to :user
 
