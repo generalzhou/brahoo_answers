@@ -6,8 +6,8 @@ describe 'Question' do
 
   before do
     @user = FactoryGirl.create(:user)
-    @question = FactoryGirl.create(:question, :user => @user)
     user_login(@user)
+    @question = FactoryGirl.create(:question, :user => @user)
   end
 
   context "Login" do
@@ -38,7 +38,7 @@ describe 'Question' do
       visit question_path(@question)
     end
 
-    it 'should display the title, text, and author and link to them' do
+    it 'should display the title, text, and author and link to the author' do
       page.should have_content @question.title
       page.should have_content @question.text
       page.should have_link @question.user.username , href: user_path(@user)
@@ -49,7 +49,7 @@ describe 'Question' do
       page.should have_link 'delete' , href: question_path(@question)
     end
 
-    it 'should not display edit and delete links to the author' do
+    it 'should not display edit and delete links to other users' do
       click_link 'Logout'
       visit question_path(@question)
       page.should_not have_link 'edit' , href: edit_question_path(@question)
@@ -65,8 +65,8 @@ describe 'Question' do
     end
 
     it 'should display the title and author links' do
-      page.should have_link @question.title
-      page.should have_link @question.user.username
+      page.should have_link @question.title, href: question_path(@question)
+      page.should have_link @question.user.username, href: user_path(@question.user)
     end
 
     it 'should let a user click the title to go to the show page' do
