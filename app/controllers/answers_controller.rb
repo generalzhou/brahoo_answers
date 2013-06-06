@@ -14,6 +14,17 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
 
+  def update
+    answer = Answer.find(params[:id])
+    if answer.update_attributes(params[:answer])
+      flash[:success] = "Your answer was updated successfully!"
+      redirect_to question_path(answer.question_id)
+    else
+      flash.now[:error] = "Your edit was unsuccessful!"
+      redirect_to :back
+    end
+  end
+
   def destroy
     Answer.find(params[:id]).destroy
     redirect_to :back
