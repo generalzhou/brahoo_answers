@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Colleged';
+    src: font-url('Colleged.ttf');
+}
+
 .digg_pagination {
   background: white;
   cursor: default;
@@ -44,3 +49,9 @@
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+
+.brah {
+  margin-top:100px;
+  font-family: 'Colleged';
+  font-size: 80px;
+}
