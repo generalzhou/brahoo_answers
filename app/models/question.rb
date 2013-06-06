@@ -14,6 +14,6 @@ class Question < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :user
 
-  self.per_page = 5
+  self.per_page = 10
 
 end
