@@ -2,6 +2,12 @@ BrahooAnswers::Application.routes.draw do
   # Questions
   resources :questions
 
+  # Answers
+  resources :answers,  :only => [:create, :edit, :destroy]
+
+  # Comments
+  resources :comments, :only => [:create, :edit, :destroy]
+
   # Users
   resources :users
   match '/signup' => 'users#new'
