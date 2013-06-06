@@ -1,0 +1,5 @@
+<%= form_for :vote, :url => :votes, :method => "post" do |f| %>
+  <%= hidden_field_tag 'voteable_id', voteable.id  %>
+  <%= hidden_field_tag 'voteable_type', voteable.class %>
+  <%= f.submit "FistBump" %>
+<% end %>
