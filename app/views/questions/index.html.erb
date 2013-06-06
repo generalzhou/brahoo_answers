@@ -1,0 +1,9 @@
+
+<%  Question.all.each do |question| %>
+  <h2>
+    <%= link_to question.title, question %>
+  </h2>
+  <h4>
+    by: <%= link_to question.user.username, question.user %>
+  </h4>
+<% end %>
