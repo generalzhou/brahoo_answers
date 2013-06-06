@@ -11,8 +11,7 @@ class AnswersController < ApplicationController
   end
 
   def edit
-    answer = Answer.find(params[:id])
-    redirect_to :back
+    @answer = Answer.find(params[:id])
   end
 
   def destroy
