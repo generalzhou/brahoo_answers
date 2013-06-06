@@ -9,28 +9,26 @@
 <body>
 <div class="navbar navbar-inverse">
   <div class="navbar-inner">
-      <!-- Be sure to leave the brand out there if you want it shown -->
-      <a class="brand" href="/">Brahoo Answers</a>
+    <%= link_to "Brahoo Answers", root_url, { :class=>"brand" } %>
     <ul class="nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="/questions">Questions</a></li>
-      <li><a href="/users">Users</a></li>
-      <li><a href="/questions/new">Ask Question</a></li>
+      <li><%= link_to "Home", root_url %></li>
+      <li><%= link_to "Questions", questions_path %></li>
+      <li><%= link_to "Users", users_path %></li>
+      <li><%= link_to "New Question", new_question_path %></li>
     </ul>
     <form class="navbar-search pull-left">
-        <input type="text" class="search-query" placeholder="Search">
+      <input type="text" class="search-query" placeholder="Search">
     </form>
     <div class="user_profile">
       <ul class="nav">
       <% if current_user %>
-      current user
-      <li><a href="/logout">Logout</a></li>
+        <span>Hi, <%= current_user.username %></span>
+        <li><%= link_to "Logout", logout_path %></li>
       <% else %>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/signup">Sign Up</a></li>
+        <li><%= link_to "Login", login_path %></li>
+        <li><%= link_to "Signup", signup_path %></li>
       <% end %>
       </ul>
-    </div>
     </div>
   </div>
 </div>
