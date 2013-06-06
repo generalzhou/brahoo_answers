@@ -1,5 +1,17 @@
-<%= form_for :vote, :url => :votes, :method => "post" do |f| %>
-  <%= hidden_field_tag 'voteable_id', voteable.id  %>
-  <%= hidden_field_tag 'voteable_type', voteable.class %>
-  <%= f.submit "FistBump" %>
+<div class="fist-bump">
+
+Fist Bumps: <%= voteable.votes.count %>
+
+<% if voteable.votes.where(:user_id => current_user.id).empty? %>
+  <%= form_for :vote, :url => :votes, :method => "post" do |f| %>
+    <%= hidden_field_tag 'voteable_id', voteable.id  %>
+    <%= hidden_field_tag 'voteable_type', voteable.class %>
+    <%= image_submit_tag("fist-bump-apart.png",
+                         :onmouseover => "this.src='/assets/fist-bump.png'",
+                         :onmouseout => "this.src='/assets/fist-bump-apart.png'")%>
+  <% end %>
+<% else %>
+  <br><%= image_tag("fist-bump-boom.png") %>
 <% end %>
+
+</div>
