@@ -5,7 +5,7 @@ describe 'User' do
 
   context "signup" do
 
-    it "logs user in and redirects to user home upon successful signup" do
+    it "logs user in upon successful signup" do
       visit signup_path
 
       expect {
@@ -33,7 +33,7 @@ describe 'User' do
       visit login_path
     end
 
-    it "redirects to admin_root after successful login" do
+    it "logs in user with proper credentials" do
       fill_in 'session_email',   with: @user.email
       fill_in 'session_password', with: "password"
       click_button "Log In"
@@ -54,19 +54,23 @@ describe 'User' do
       user_login(@user)
     end
 
-    it "can see the logout link" do
-      page.should have_link "Logout"
-    end
-
-    it "can see the username" do
+    it "should log in user" do
       page.should have_content @user.username
     end
 
-    it "can not see the login link" do
+    it "should display the logout link" do
+      page.should have_link "Logout"
+    end
+
+    it "should display the username" do
+      page.should have_content @user.username
+    end
+
+    it "should not display the login link" do
       page.should_not have_link "Login"
     end
 
-    it "can not see the signup link" do
+    it "should not display the signup link" do
       page.should_not have_link "Signup"
     end
   end
@@ -76,15 +80,15 @@ describe 'User' do
       visit root_path
     end
 
-    it "can not see the logout link" do
+    it "should not display the logout link" do
       page.should_not have_link "Logout"
     end
 
-    it "can see the login link" do
+    it "should display the login link" do
       page.should have_link "Login"
     end
 
-    it "can see the signup link" do
+    it "should display the signup link" do
       page.should have_link "Signup"
     end
   end
