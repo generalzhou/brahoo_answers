@@ -1,10 +1,10 @@
-<div class="form">
-  <%= form_for :comment do |f| %>
-    <div class="field">
-      <%= f.text_field :text, placeholder: "Add a comment" %>
-    </div>
-    <div class="action">
-      <%= f.submit "Comment", class: "btn" %>
-    </div>
-  <% end %>
-</div>
+<% if current_user %>
+  <div class="form-inline">
+    <%= form_for :comment, html: {class: "form-inline"} do |f| %>
+      <div class="field">
+        <%= f.text_field :text, placeholder: "Add a comment" %>
+        <%= f.submit "Comment", class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<% unless parent.comments.empty? %>
+  Comments:
+  <blockquote>
+    <ul class="unstyled">
+      <% parent.comments.each do |comment| %>
+        <li>
+          <small>
+            <%= comment.text %> - <%= link_to comment.user.username, comment.user %>
+          </small>
+        </li>
+      <% end %>
+    </ul>
+  </blockquote>
+<% end %>
