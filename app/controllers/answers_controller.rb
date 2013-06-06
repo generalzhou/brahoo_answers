@@ -1,12 +1,14 @@
 class AnswersController < ApplicationController
 
   def create
-    answer = Answer.new(params[:answer])
+    answer = Answer.new
     answer.user = current_user
+    answer.question_id = params[:answer][:question_id]
+    answer.text = params[:answer][:text]
     if answer.save
       flash[:success] = "Your answer was posted successfully!"
     else
-      flash.now[:error] = "Unsuccessful answer attempt!"
+      flash[:error] = "Unsuccessful answer attempt!"
     end
     redirect_to :back
   end
@@ -22,7 +24,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Your answer was updated successfully!"
       redirect_to question_path(answer.question_id)
     else
-      flash.now[:error] = "Your edit was unsuccessful!"
+      flash[:error] = "Your edit was unsuccessful!"
       redirect_to :back
     end
   end

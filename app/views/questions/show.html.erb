@@ -6,7 +6,31 @@
   <%= @question.text %>
 </p>
 
+<p>
+  Answers:
+  <% @question.answers.each do |answer| %>
+    <ul>
+    <li><%= answer.text %></li>
+    </ul>
+  <% end %>
+</p>
+
+
 <% if @question.user == current_user %>
   <%= link_to 'edit', edit_question_path(@question) %>
   <%= link_to 'delete', @question, :confirm => "Are you sure?", :method=>:delete %>
+<% end %>
+
+<br>
+<br>
+
+<% if current_user %>
+  Answer: <%= render "answer" %>
+  Comment: <%= render "comment" %>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value %>
+  </div>
 <% end %>
