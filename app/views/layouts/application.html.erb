@@ -7,7 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="/">Brahoo Answers</a>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/questions">Questions</a></li>
+      <li><a href="/users">Users</a></li>
+      <li><a href="/questions/new">Ask Question</a></li>
+    </ul>
+    <form class="navbar-search pull-left">
+        <input type="text" class="search-query" placeholder="Search">
+    </form>
+    <div class="user_profile">
+      <ul class="nav">
+      <% if current_user %>
+      current user
+      <li><a href="/logout">Logout</a></li>
+      <% else %>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/signup">Sign Up</a></li>
+      <% end %>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
 <%= yield %>
 
 </body>
