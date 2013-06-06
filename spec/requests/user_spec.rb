@@ -17,6 +17,7 @@ describe 'User' do
       }.to change(User, :count).by(1)
 
       page.should have_content "testuser"
+      page.should have_content "You have signed up successfully!"
     end
     
     it "displays errors on unsuccessful signup" do
@@ -35,17 +36,16 @@ describe 'User' do
     it "redirects to admin_root after successful login" do
       visit login_path
       
-      fill_in 'email',   with: @user.email
-      fill_in 'password', with: "password"
-      click_button "Login"
+      fill_in 'session_email',   with: @user.email
+      fill_in 'session_password', with: "password"
+      click_button "Log In"
 
-      # page.should have_content "You have signed in successfully"
-      # page.should have_content "" 
+      page.should have_content @user.username
     end
 
     it "displays errors on unsuccessful login" do
       visit login_path
-      click_button "Login"
+      click_button "Log In"
 
       # page.should have_content "Error: unsuccessful login"
     end
