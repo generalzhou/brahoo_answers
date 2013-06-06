@@ -1,7 +1,8 @@
 <div class="form">
-  <%= form_for :answer do |f| %>
+  <%= form_for :answer, :url => answers_path do |f| %>
     <div class="field">
       <%= f.text_field :text, placeholder: "Answer this question" %>
+      <%= f.hidden_field :question_id, value: params[:id] %>
     </div>
     <div class="action">
       <%= f.submit "Answer", class: "btn" %>

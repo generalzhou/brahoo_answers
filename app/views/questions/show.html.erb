@@ -8,7 +8,33 @@
 
 <%= link_to @question.user.username, @question.user %>
 
+<p>
+  Answers:
+  <ul>
+  <% @question.answers.each do |answer| %>
+    <li><%= answer.text %></li>
+  <% end %>
+  </ul>
+</p>
+
 <% if @question.user == current_user %>
   <%= link_to 'edit', edit_question_path(@question) %>
   <%= link_to 'delete', @question, :confirm => "Are you sure?", :method=>:delete %>
 <% end %>
+
+<br>
+
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
+
+<br>
+
+<% if current_user %>
+  Answer: <%= render "answer" %>
+  Comment: <%= render "comment" %>
+<% end %>
+
+

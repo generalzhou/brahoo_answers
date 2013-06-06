@@ -1,0 +1,5 @@
+Username: <%= @user.username %><br>
+Email: <%= @user.email %><br>
+<% if @user.image.present? %>
+Avatar: <%= image_tag @user.image.thumb %>
+<% end %>
