@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        password_digest: "Password"
+# changes signup error message from password_digest to password
+# http://stackoverflow.com/questions/6158585/override-validation-error-message-for-securepassword
