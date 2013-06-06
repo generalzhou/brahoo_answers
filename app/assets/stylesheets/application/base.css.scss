@@ -1,5 +1,6 @@
 body {
-  background-image: image-url('concert.jpg');
+  background-image: image-url('backdrop.jpg');
+  background-image: none;
   background-attachment:fixed;
   background-position:center;
   padding-top:40px;
@@ -63,8 +64,10 @@ a:active {text-decoration:none !important;}
   -moz-border-radius: 0 !important;
   border-radius: 0 !important;
   background-image: none;
-}
-
-.navbar-inner{
   opacity:0.8;
 }
+
+.brand {
+  margin-left: 250px;
+}
+
