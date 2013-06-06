@@ -5,7 +5,7 @@ describe 'User' do
 
   context "signup" do
 
-    it "logs user in and redirects to home upon successful signup" do
+    it "logs user in and redirects to user home upon successful signup" do
       visit signup_path
 
       expect {
@@ -17,7 +17,6 @@ describe 'User' do
       }.to change(User, :count).by(1)
 
       page.should have_content "testuser"
-      page.should have_content "You have signed up successfully!"
     end
     
     it "displays errors on unsuccessful signup" do
@@ -31,11 +30,10 @@ describe 'User' do
   context "login" do
     before(:each) do
       @user = FactoryGirl.create(:user)
+      visit login_path
     end
 
     it "redirects to admin_root after successful login" do
-      visit login_path
-      
       fill_in 'session_email',   with: @user.email
       fill_in 'session_password', with: "password"
       click_button "Log In"
@@ -44,14 +42,13 @@ describe 'User' do
     end
 
     it "displays errors on unsuccessful login" do
-      visit login_path
       click_button "Log In"
 
-      # page.should have_content "Error: unsuccessful login"
+      page.should have_content "Unsuccessful login attempt!"
     end
   end
 
-  context "logged in on homepage" do
+  context "navbar while logged in" do
     before(:each) do
       @user = FactoryGirl.create(:user)
       user_login(@user)
@@ -74,8 +71,7 @@ describe 'User' do
     end
   end
 
-  context "logged out on homepage" do
-
+  context "navbar while logged out" do
     before(:each) do
       visit root_path
     end
