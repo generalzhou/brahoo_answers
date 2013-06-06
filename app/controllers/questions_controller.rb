@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show]
 
   def index
+    @questions = Question.paginate(:page => params[:page])
   end
 
   def new
