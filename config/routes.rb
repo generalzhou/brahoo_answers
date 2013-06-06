@@ -20,6 +20,9 @@ BrahooAnswers::Application.routes.draw do
   # Tags
   resources :tags, :only => [:show, :index]
 
+  # Votes
+  resources :votes, :only => [:create]
+
   # Root
   root :to => 'questions#index'
 end
