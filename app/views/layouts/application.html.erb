@@ -9,7 +9,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <%= link_to "Brahoo Answers", root_url, { :class=>"brand" } %>
     <ul class="nav">
@@ -35,7 +35,9 @@
   </div>
 </div>
 <div class="container">
+  <div class="content">
 <%= yield %>
+  </div>
 </div>
 </body>
 </html>
