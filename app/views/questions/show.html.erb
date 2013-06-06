@@ -2,39 +2,44 @@
   <%= @question.title %>
 </h1>
 
-<p>
-  <%= @question.text %>
-</p>
+<div class="row">
+  <div class="span6">
+    <p class="lead">
+      <%= @question.text %>
+    </p>
 
-<%= link_to @question.user.username, @question.user %>
+    <h5>
+      tags: <%= render partial: 'tags/tags', locals: {question: @question} %>
+    </h5>
 
-<p>
-  Answers:
-  <ul>
-  <% @question.answers.each do |answer| %>
-    <li><%= answer.text %></li>
-  <% end %>
-  </ul>
-</p>
+    <h5>
+      Asked by this bro at: <%= @question.created_at %>
+    </h5>
 
-<% if @question.user == current_user %>
-  <%= link_to 'edit', edit_question_path(@question) %>
-  <%= link_to 'delete', @question, :confirm => "Are you sure?", :method=>:delete %>
-<% end %>
+    <%= image_tag @question.user.image.thumb if @question.user.image.present? %>
+    <%= link_to @question.user.username, @question.user %>
 
-<br>
+    <%= render partial: 'edit_question', locals: {question: @question } %>
+    <%= render "answer" %>
+
+  </div>
+  <div class="span2">
+    <%= render partial: 'votes/vote', locals: { voteable: @question } %>
+  </div>
+</div>
+
+  <%= render partial: 'comments/display_comments', locals: {parent: @question} %>
+
+<h3>
+  <%= @question.answers.empty? ? "Answer this question dammit!" : "#{@question.answers.count} Answers:" %>
+</h3>
+
+<div class="span8">
+  <%= render partial: 'answers/display_answers', locals: {question: @question} %>
+</div>
 
 <% flash.each do |key, value| %>
   <div class="<%= flash_class(key) %>">
     <%= value %>
   </div>
 <% end %>
-
-<br>
-
-<% if current_user %>
-  Answer: <%= render "answer" %>
-  Comment: <%= render "comment" %>
-<% end %>
-
-

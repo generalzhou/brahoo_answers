@@ -1,11 +1,10 @@
-<div class="form">
-  <%= form_for :answer, :url => answers_path do |f| %>
-    <div class="field">
-      <%= f.text_field :text, placeholder: "Answer this question" %>
+<% if current_user %>
+  <h5>Answer this question: </h5>
+  <div class="form">
+    <%= form_for :answer, url: answers_path, html: {class: "form-inline"} do |f| %>
+      <%= f.text_field :text, placeholder: "Answer this question", class: "span6" %>
       <%= f.hidden_field :question_id, value: params[:id] %>
-    </div>
-    <div class="action">
       <%= f.submit "Answer", class: "btn" %>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
