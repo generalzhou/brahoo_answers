@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     if answer.save
       flash[:success] = "Your answer was posted successfully!"
     else
-      flash.now[:error] = "Unsuccessful answer attempt!"
+      flash[:error] = "Unsuccessful answer attempt!"
     end
     redirect_to :back
   end
@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Your answer was updated successfully!"
       redirect_to question_path(answer.question_id)
     else
-      flash.now[:error] = "Your edit was unsuccessful!"
+      flash[:error] = "Your edit was unsuccessful!"
       redirect_to :back
     end
   end
