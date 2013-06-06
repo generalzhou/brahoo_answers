@@ -6,6 +6,8 @@
   <%= @question.text %>
 </p>
 
+<%= link_to @question.user.username, @question.user %>
+
 <% if @question.user == current_user %>
   <%= link_to 'edit', edit_question_path(@question) %>
   <%= link_to 'delete', @question, :confirm => "Are you sure?", :method=>:delete %>

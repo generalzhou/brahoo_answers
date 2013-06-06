@@ -12,5 +12,6 @@ class Question < ActiveRecord::Base
   belongs_to :best_answer, :class_name => "Answer", :foreign_key => "best_answer_id"
 
   validates_presence_of :title
+  validates_presence_of :user
 
 end

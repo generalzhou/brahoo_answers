@@ -1,20 +1,14 @@
 describe 'Answer' do
 
   context "create" do
-  
-    it 'should create a new answer'
-  
-    it 'should require a user author'
 
-    it 'should require a text field'
+    it 'should create a new answer'
 
   end
 
   context "show page" do
-    
-    it 'should display the text'
 
-    it 'should display the author'
+    it 'should display the text and author and link to the author'
 
     it 'should let an author click on the edit link to edit the answer'
 
