@@ -17,6 +17,9 @@ BrahooAnswers::Application.routes.draw do
   post   '/login'  => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  # Tags
+  resources :tags, :only => [:show, :index]
+
   # Root
   root :to => 'questions#index'
 end
