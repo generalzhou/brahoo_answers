@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :username, :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation, :image
   mount_uploader :image, ImageUploader
 
   has_secure_password
