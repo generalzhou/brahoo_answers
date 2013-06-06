@@ -1,0 +1,12 @@
+<div class="form form-stacked">
+  <%= form_for @question do |f| %>
+    <div class="field">
+      <%= f.text_field :title %>
+      <br>
+      <%= f.text_area :text, :size => "24x6"%>
+    </div>
+    <div class="action">
+      <%= f.submit "Edit!", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
