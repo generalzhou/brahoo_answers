@@ -6,3 +6,7 @@
     by: <%= link_to question.user.username, question.user %>
   </h4>
 <% end %>
+
+<div class="digg_pagination">
+<%= will_paginate @questions %>
+</div>
