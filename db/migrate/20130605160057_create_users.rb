@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, null: false
       t.string :email, null: false
       t.string :password_digest, null: false
-      t.string :image
+      t.string :image, :default => "default.png"
       t.timestamps
     end
   end
