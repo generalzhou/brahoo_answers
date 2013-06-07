@@ -180,9 +180,9 @@ input[type='file'] {
 }
 
 .user-profile {
-  width: 150px;
+  width: 200px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px 0 50px 0;
 }
 
 .ask-question {
@@ -193,4 +193,13 @@ input[type='file'] {
 
 .brahoo-font {
   font-family: 'Colleged';
+}
+
+.user_title {
+  text-align:center;
+}
+
+.user_avatar {
+  width:64px !important;
+  margin:0 auto !important;
 }
