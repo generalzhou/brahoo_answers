@@ -1,5 +1,14 @@
-Username: <%= @user.username %><br>
-Email: <%= @user.email %><br>
-<% if @user.image.present? %>
-Avatar: <%= image_tag @user.image.thumb %>
+<br><h3 class="user_title"><%= @user.username %></h3><br>
+<div class="user_avatar"><%= image_tag @user.image.thumb %></div><br>
+
+<div class="user-profile">
+Questions: <br>
+<% @user.questions.each do |question| %>
+<%= link_to question.title, question_path(question) %><br>
 <% end %>
+<br><br>
+Answers: <br>
+<% @user.answers.each do |answer| %>
+<%= link_to answer.question.title, question_path(answer.question) %><br>
+<% end %>
+</div>

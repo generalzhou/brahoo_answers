@@ -1,9 +1,8 @@
 body {
   background-image: image-url('backdrop.png');
-  background-image: none;
   background-attachment:fixed;
   background-position:center;
-  padding-top:90px;
+  padding-top:53px;
   background-color: #eceef1 !important;
 }
 
@@ -167,6 +166,7 @@ input[type='file'] {
   margin-top: 10px;
 }
 
+
 .tt-suggestion {
   background-color: white;
   width:210px;
@@ -174,4 +174,41 @@ input[type='file'] {
   margin-top:-10px;
   font-size:14px;
   padding: 5px 0px 5px 5px;
+}
+.user-info {
+  position: relative;
+  display: inline-block;
+  width: 140px;
+  height: 70px;
+  margin-left:30px;
+  margin-top:30px;
+  margin-bottom:30px;
+}
+
+.username {
+}
+
+.user-profile {
+  width: 200px;
+  margin: 0 auto;
+  padding: 20px 0 50px 0;
+}
+
+.ask-question {
+  width:550px !important;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.brahoo-font {
+  font-family: 'Colleged';
+}
+
+.user_title {
+  text-align:center;
+}
+
+.user_avatar {
+  width:64px !important;
+  margin:0 auto !important;
 }
