@@ -1,4 +1,4 @@
-<h1>
+<h1 class='brahoo-'>
   <%= @question.title %>
 </h1>
 <br>
@@ -7,29 +7,34 @@
   <div class="span2 text-center">
     <%= render partial: 'votes/vote', locals: { voteable: @question } %>
   </div>
-
-  <div class="span6">
+  <div class="span5">
     <p class="lead">
       <%= @question.text %>
     </p>
     <%= render partial: 'tags/tags', locals: {question: @question} %>
-    <div class="text-right lead">- <%= link_to @question.user.username, @question.user %>, bro</div>
-    <%= image_tag @question.user.image.thumb if @question.user.image.present? %>
-
-
     <%= render partial: 'edit_question', locals: {question: @question } %>
-    <br>
+
+  </div>
+  <div class='span1 lead text-center'>
+    <%= link_to image_tag(@question.user.image.thumb), @question.user%>
+    <%= link_to @question.user.username, @question.user %>
+  </div>
+  <br>
+</div>
+
+<div class='row'>
+  <div class='span2'></div>
+  <div class='span6'>
     <%= render "answer" %>
     <%= render partial: 'comments/display_comments', locals: {parent: @question} %>
   </div>
 </div>
 
-
+<!-- answers -->
 <h3>
   <%= @question.answers.empty? ? "Answer this question dammit!" : "#{@question.answers.count} Answers:" %>
 </h3>
 <%= render partial: 'answers/display_answers', locals: {question: @question} %>
-
 <% flash.each do |key, value| %>
   <div class="<%= flash_class(key) %>">
     <%= value %>

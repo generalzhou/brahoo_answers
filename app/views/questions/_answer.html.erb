@@ -1,7 +1,7 @@
 <% if current_user %>
   <div class="form">
     <%= form_for :answer, url: answers_path, html: {class: "form-inline"} do |f| %>
-      <%= f.text_field :text, placeholder: "Answer this question", class: "span6" %>
+      <%= f.text_field :text, placeholder: "Answer this question", class: "span5" %>
       <%= f.hidden_field :question_id, value: params[:id] %>
       <%= f.submit "Answer", class: "btn" %>
     <% end %>
