@@ -1,6 +1,7 @@
 BrahooAnswers::Application.routes.draw do
   # Questions
   put '/questions/best_answer' => 'questions#best_answer', :as => 'best_answer'
+  get '/questions/search_terms/:query' => 'questions#search_terms', :as => 'search_terms'
   resources :questions
 
 
