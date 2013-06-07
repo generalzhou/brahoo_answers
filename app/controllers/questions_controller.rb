@@ -22,8 +22,6 @@ class QuestionsController < ApplicationController
 
   def search_terms
     @search = Question.search { fulltext params[:query] }
-    puts "\n\n\n\n" 
-    p @search.results
     render :json => @search.results.map(&:title)
   end
 
