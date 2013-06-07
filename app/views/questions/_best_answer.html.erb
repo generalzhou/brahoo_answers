@@ -1,12 +1,19 @@
 <% if current_user == question.user%>
-  <%= form_for question, url: 'best_answer', method: 'put' do |f| %>
+  <%= form_for question, url: 'best_answer', method: 'put', html: {class: 'best-answer'} do |f| %>
     <%= f.hidden_field :id, value: question.id %>
+
     <% if question.best_answer.nil? %>
       <%= f.hidden_field :best_answer_id, value: answer.id  %>
-      <%= f.submit 'This A swags out my Q' %>
+      <%= image_submit_tag("sunglasses_outline.png", onmouseover: "this.src='/assets/sunglasses.png'", onmouseout: "this.src='/assets/sunglasses_outline.png'", class:'select-best')%>
+
     <% elsif question.best_answer == answer %>
       <%= f.hidden_field :best_answer_id, value: nil  %>
-      <%= f.submit 'Naw bro'%>
+      <%= image_submit_tag("sunglasses.png", onmouseover: "this.src='/assets/sunglasses_outline.png'", onmouseout: "this.src='/assets/sunglasses.png'", class:'is-best')%>
     <% end %>
   <% end %>
+
+<% elsif question.best_answer == answer %>
+<h5>best answer</h5>
+  <%= image_tag 'sunglasses.png' %>
 <% end %>
+
