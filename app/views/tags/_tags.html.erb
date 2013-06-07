@@ -4,8 +4,6 @@
   </li>
   <% question.tags.each do |tag| %>
     <span class="btn btn-mini"><%= link_to tag.name, tag_path(tag) %></span>
-    <li>
-      <h4><%= link_to tag.name, tag_path(tag) %></h4>
-    </li>
+
   <% end %>
 </ul>
