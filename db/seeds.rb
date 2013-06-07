@@ -1,6 +1,43 @@
 ###
 # Make Users
 ###
+# require 'pry'
+require 'yaml'
+BRO = YAML.load_file('db/bronouns.yml')
+
+class Bro
+
+  def self.question_title
+    lead = ['Should', 'Can', "Will"].sample
+    person = ['I', 'bros', 'you', 'my brosephs'].sample
+    verb = BRO['verbs'].sample
+    [lead,person,verb].join(' ') + '?'
+  end
+
+  def self.question_text
+    lead = ['How', 'Where', 'What', 'When'].sample
+    q = ['can','should', 'will','would'].sample
+    verb = BRO['verbs'].sample
+    adjective = BRO['brahjectives'].sample
+    noun = (BRO['nouns'] + BRO['events']).sample
+    [lead, q, 'I', verb, adjective, noun].join(' ') + '?'
+  end
+
+  def self.answer(username)
+    greeting = BRO['greetings'].sample
+    bronoun = [BRO['bronouns'].sample, username].sample
+    brahverb = BRO['brahverbs'].sample
+    "#{greeting.capitalize}, #{bronoun.downcase}. #{brahverb}"
+  end
+
+  def self.comment
+    BRO['brahverbs'].sample
+  end
+
+  def self.username
+    BRO['bronames'].sample.gsub(' ', '_')
+  end
+end
 
 usernames = ["Mitch", "Jack", "Henry"]
 usernames.each do |username|
@@ -10,8 +47,8 @@ usernames.each do |username|
 end
 
 12.times do
-  User.create(username: Faker::Internet.user_name,
-              email:    Faker::Internet.email,
+  User.create(username: Bro.username,
+              email:    Bro.username.downcase+"@gmail.com",
               password: "password" )
 end
 
@@ -23,8 +60,8 @@ users = User.all
 ###
 
 30.times do
-  Question.create(title: Faker::Company.name,
-                  text:  Faker::Lorem.sentence,
+  Question.create(title: Bro.question_title,
+                  text:  Bro.question_text,
                   user:  users.sample)
 end
 
@@ -34,9 +71,10 @@ end
 ###
 
 60.times do
-  Answer.create(question_id: Question.all.sample.id,
+  question = Question.all.sample
+  Answer.create(question_id: question.id,
                 user_id:     users.sample.id,
-                text:        Faker::Company.catch_phrase)
+                text:        Bro.answer(question.user.username))
 end
 
 commentable = Answer.all + Question.all
@@ -47,7 +85,7 @@ commentable = Answer.all + Question.all
 ###
 
 180.times do
-  Comment.create(text: Faker::Company.bs,
+  Comment.create(text: Bro.comment,
                  user_id: users.sample.id)
 end
 
