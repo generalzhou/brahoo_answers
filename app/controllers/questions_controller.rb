@@ -2,7 +2,12 @@ class QuestionsController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show]
 
   def index
-    @questions = Question.paginate(:page => params[:page])
+    if params[:search]
+      @search = Question.search { fulltext params[:search] }
+      @questions = @search.results
+    else
+      @questions = Question.paginate(:page => params[:page])
+    end
   end
 
   def new
