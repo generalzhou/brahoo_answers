@@ -2,7 +2,7 @@
 
 Fist Bumps: <%= voteable.votes.count %>
 
-<% if voteable.votes.where(:user_id => current_user.id).empty? %>
+<% if current_user && voteable.votes.where(:user_id => current_user.id).empty? %>
   <%= form_for :vote, :url => :votes, :method => "post" do |f| %>
     <%= hidden_field_tag 'voteable_id', voteable.id  %>
     <%= hidden_field_tag 'voteable_type', voteable.class %>
@@ -10,8 +10,10 @@ Fist Bumps: <%= voteable.votes.count %>
                          :onmouseover => "this.src='/assets/fist-bump.png'",
                          :onmouseout => "this.src='/assets/fist-bump-apart.png'")%>
   <% end %>
-<% else %>
+<% elsif current_user %>
   <br><%= image_tag("fist-bump-boom.png") %>
+<% else %>
+  <br><%= link_to image_tag("fist-bump-apart.png"), login_path %>
 <% end %>
 
 </div>
