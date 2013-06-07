@@ -1,7 +1,5 @@
 <ul class="inline">
   <% question.tags.each do |tag| %>
-    <li>
-      <%= link_to tag.name, tag_path(tag) %>
-    </li>
+    <span class="btn btn-mini"><%= link_to tag.name, tag_path(tag) %></span>
   <% end %>
 </ul>
