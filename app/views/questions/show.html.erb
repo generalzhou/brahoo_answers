@@ -1,23 +1,19 @@
 <h1>
   <%= @question.title %>
 </h1>
+<br>
 
 <div class="row">
-  <div class="span2">
+  <div class="span2 text-center">
     <%= render partial: 'votes/vote', locals: { voteable: @question } %>
   </div>
 
-  <div class="span8">
+  <div class="span6">
     <p class="lead">
       <%= @question.text %>
     </p>
-
-
     <%= render partial: 'tags/tags', locals: {question: @question} %>
-
-
     <div class="text-right lead">- <%= link_to @question.user.username, @question.user %>, bro</div>
-
     <%= image_tag @question.user.image.thumb if @question.user.image.present? %>
 
 

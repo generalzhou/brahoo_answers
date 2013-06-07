@@ -1,0 +1,12 @@
+<% if current_user == question.user%>
+  <%= form_for question, url: 'best_answer', method: 'put' do |f| %>
+    <%= f.hidden_field :id, value: question.id %>
+    <% if question.best_answer.nil? %>
+      <%= f.hidden_field :best_answer_id, value: answer.id  %>
+      <%= f.submit 'This A swags out my Q' %>
+    <% elsif question.best_answer == answer %>
+      <%= f.hidden_field :best_answer_id, value: nil  %>
+      <%= f.submit 'Naw bro'%>
+    <% end %>
+  <% end %>
+<% end %>
