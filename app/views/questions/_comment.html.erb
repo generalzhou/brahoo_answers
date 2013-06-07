@@ -2,8 +2,8 @@
   <div class="form-inline comment-form">
     <%= form_for :comment, :url => :comments, html: {class: "form-inline"} do |f| %>
       <div class="field">
-        <%= hidden_field_tag 'commentable_id', commentable.id  %>
-        <%= hidden_field_tag 'commentable_type', commentable.class %>
+        <%= f.hidden_field :commentable_id, value: commentable.id  %>
+        <%= f.hidden_field :commentable_type, value: commentable.class %>
         <%= f.text_field :text, placeholder: "Add a comment" %>
         <%= f.submit "Comment", class: "btn" %>
       </div>

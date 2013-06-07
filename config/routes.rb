@@ -1,6 +1,8 @@
 BrahooAnswers::Application.routes.draw do
   # Questions
+  put '/questions/best_answer' => 'questions#best_answer', :as => 'best_answer'
   resources :questions
+
 
   # Answers
   resources :answers,  :only => [:create, :edit, :destroy]

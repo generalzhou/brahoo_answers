@@ -9,10 +9,15 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  def best_answer
+    question = Question.find(params[:question][:id])
+    question.update_attributes(best_answer_id: params[:question][:best_answer_id])
+    redirect_to :back
+  end
+
   def create
     @question = Question.new(params[:question])
     @question.user = current_user
-
     if @question.save
       flash[:success] = "Your question got added brah"
       redirect_to @question
@@ -32,7 +37,6 @@ class QuestionsController < ApplicationController
 
   def update
     question = Question.find(params[:id])
-
     if question.user == current_user && question.update_attributes(params[:question])
       flash[:success] = "Your question got edited brah"
       redirect_to question

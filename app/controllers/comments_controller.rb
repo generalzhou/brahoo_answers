@@ -2,10 +2,7 @@ class CommentsController < ApplicationController
 
   def create
 
-    comment = Comment.new(:commentable_id => params[:commentable_id],
-                          :commentable_type => params[:commentable_type],
-                          :text => params[:comment][:text],
-                          )
+    comment = Comment.new(params[:comment])
     comment.user = current_user
     if comment.save
       if request.xhr?

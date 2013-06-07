@@ -3,16 +3,20 @@
     <li>
       <div class='row'>
 
-        <div class="span2">
+        <div class="span2 text-center">
           <%= render partial: 'votes/vote', locals: { voteable: answer } %>
+          <br>
+          <%= render partial: 'best_answer', locals: {answer: answer , question: question} %>
         </div>
 
 
-        <div class="span8">
+        <div class="span6">
           <p class='lead'>
             <%= answer.text %>
             <br>
-          - <%= link_to answer.user.username, answer.user %>
+          <div class="text-right lead">
+            - <%= link_to answer.user.username, answer.user, class: 'text-right' %>
+          </div>
           </p>
             <%= render partial: 'comments/display_comments', locals: {parent: answer} %>
         </div>
