@@ -1,1 +1,46 @@
-_question_display.html.erb
+
+<% if question.votes.count == 1 %>
+  <%= link_to question do %>
+  <div class="counter">
+    <span class="stat"><%= question.votes.count %></span>
+    <span class="type">fistbump</span>
+  </div>
+  <% end %>
+<% else %>
+  <%= link_to question do %>
+  <div class="counter">
+    <span class="stat"><%= question.votes.count %></span>
+    <span class="type">fistbumps</span>
+  </div>
+  <% end %>
+<% end %>
+
+<%= link_to question do %>
+  <% if question.answers.count > 0 %>
+  <div class="counter highlighted">
+  <span class="stat"> <%= question.answers.count %></span>
+  <span class="type">answers</span>
+  </div>
+  <% else %>
+  <div class="counter">
+  <span class="stat"> <%= question.answers.count %></span>
+  <span class="type">answer</span>
+  </div>
+  <% end %>
+<% end %>
+
+  <div class="question-title">
+    <h4>
+      <%= link_to question.title, question %>
+    </h4>
+  </div>
+  <div class="question-user">
+    <h4>
+      by: <%= link_to question.user.username, question.user %>
+    </h4>
+  </div>
+  <% question.tags.each do |tag| %>
+    <span class="btn btn-mini"><%= link_to tag.name, tag %></span>
+  <% end %>
+
+  <br><br><br>
