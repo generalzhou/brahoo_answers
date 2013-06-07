@@ -1,3 +1,4 @@
+<div class="content">
 <% flash.each do |key, value| %>
   <div class="<%= flash_class(key) %>">
     <%= value %>
@@ -8,3 +9,4 @@
 
 <h3>Or</h3>
 <h3><%= link_to "Create a new account", signup_path %></h3>
+</div>
