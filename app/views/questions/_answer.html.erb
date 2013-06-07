@@ -1,5 +1,4 @@
 <% if current_user %>
-  <h5>Answer this question: </h5>
   <div class="form">
     <%= form_for :answer, url: answers_path, html: {class: "form-inline"} do |f| %>
       <%= f.text_field :text, placeholder: "Answer this question", class: "span6" %>
