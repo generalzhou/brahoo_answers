@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass'
 gem 'sqlite3'
+gem 'nifty-generators'
+gem 'sunspot_rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -19,6 +21,7 @@ group :test, :development do
   gem 'quiet_assets'
   gem 'shoulda-matchers'
   gem 'faker'
+  gem 'sunspot_solr'
 end
 
 gem 'jquery-rails'
