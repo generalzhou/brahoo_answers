@@ -2,15 +2,21 @@
   <% question.answers.each do |answer| %>
     <li>
       <div class='row'>
-        <div class='span6'>
-          <%= answer.text %>
-          <br>
-          - <%= link_to answer.user.username, answer.user %>
-            <%= render partial: 'comments/display_comments', locals: {parent: answer} %>
-        </div>
+
         <div class="span2">
           <%= render partial: 'votes/vote', locals: { voteable: answer } %>
         </div>
+
+
+        <div class="span8">
+          <p class='lead'>
+            <%= answer.text %>
+            <br>
+          - <%= link_to answer.user.username, answer.user %>
+          </p>
+            <%= render partial: 'comments/display_comments', locals: {parent: answer} %>
+        </div>
+
       </div>
     </li>
   <% end %>
