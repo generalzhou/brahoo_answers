@@ -1,6 +1,6 @@
 <div class="fist-bump">
 
-<span class="bumps">Fist Bumps: <span class="vote-count"><%= voteable.votes.count %></span></span>
+Fist Bumps: <span class="vote-count"><%= voteable.votes.count %></span>
 
 <% if current_user && voteable.votes.where(:user_id => current_user.id).empty? %>
   <%= form_for :vote, :url => :votes, :method => "post" do |f| %>
