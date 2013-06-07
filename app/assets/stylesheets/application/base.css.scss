@@ -94,8 +94,22 @@ margin-right:10px;
 }
 
 .counter {
-width:50px;
+width:65px;
 display: inline-block;
 margin:0 10px;
 text-align: center;
+}
+
+.question-partial {
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
+  margin-bottom: -1px;
+  padding-top: 35px;
+  padding-bottom: -10px;
+}
+
+.highlighted {
+  padding: 5px;
+  background-color: green;
+  color:white;
 }
