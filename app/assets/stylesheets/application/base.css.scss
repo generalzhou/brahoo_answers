@@ -98,6 +98,7 @@ width:65px;
 display: inline-block;
 margin:0 10px;
 text-align: center;
+padding: 5px;
 }
 
 .question-partial {
@@ -109,7 +110,16 @@ text-align: center;
 }
 
 .highlighted {
-  padding: 5px;
   background-color: green;
   color:white;
+}
+
+.tag-links {
+  list-style-type: none;
+}
+
+.tag-title {
+  text-align: center;
+  width:400px;
+  margin: 0 auto;
 }
