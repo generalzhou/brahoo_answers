@@ -24,7 +24,6 @@
     <div class="user_profile">
       <ul class="nav">
       <% if current_user %>
-        <span>Hi, <%= current_user.username %></span>
         <li><%= link_to "Logout", logout_path, :method => 'delete' %></li>
       <% else %>
         <li><%= link_to "Login", login_path %></li>
@@ -35,9 +34,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="content">
 <%= yield %>
-  </div>
 </div>
 </body>
 </html>
