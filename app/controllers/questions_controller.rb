@@ -20,6 +20,13 @@ class QuestionsController < ApplicationController
     redirect_to :back
   end
 
+  def search_terms
+    @search = Question.search { fulltext params[:query] }
+    puts "\n\n\n\n" 
+    p @search.results
+    render :json => @search.results.map(&:title)
+  end
+
   def create
     @question = Question.new(params[:question])
     @question.user = current_user
