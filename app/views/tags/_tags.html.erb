@@ -1,7 +1,10 @@
 <ul class="inline">
+  <li>
+    <h4>Frategories: </h4>
+  </li>
   <% question.tags.each do |tag| %>
     <li>
-      <%= link_to tag.name, tag_path(tag) %>
+      <h4><%= link_to tag.name, tag_path(tag) %></h4>
     </li>
   <% end %>
 </ul>

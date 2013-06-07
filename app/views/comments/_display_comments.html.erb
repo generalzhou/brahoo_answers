@@ -1,14 +1,17 @@
-<% unless parent.comments.empty? %>
-  Comments:
+<div class='comments'>
+  <a>
+    <%= parent.comments.count %> Comment<%= 's' unless parent.comments.count == 1 %> <strong>></strong>
+  </a>
   <blockquote>
     <ul class="unstyled">
       <% parent.comments.each do |comment| %>
-        <li>
-          <small>
-            <%= comment.text %> - <%= link_to comment.user.username, comment.user %>
-          </small>
+        <li class='muted'>
+          <%= comment.text %> - <%= link_to comment.user.username, comment.user %>
         </li>
       <% end %>
+      <br>
+      <%= render partial: 'questions/comment', locals: {commentable: parent} %>
     </ul>
   </blockquote>
-<% end %>
+</div>
+

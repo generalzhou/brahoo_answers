@@ -1,21 +1,30 @@
 class CommentsController < ApplicationController
 
   def create
-    comment = Comment.new(params[:comment])
+
+    comment = Comment.new(:commentable_id => params[:commentable_id],
+                          :commentable_type => params[:commentable_type],
+                          :text => params[:comment][:text],
+                          )
     comment.user = current_user
     if comment.save
-      flash.now[:success] = "Your comment was posted successfully!"
+      respond_to do |format|
+        format.html {
+          render partial: 'display_comments', locals: {parent: comment.commentable}
+        }
+      end
     else
       flash.now[:error] = "Unsuccessful comment attempt!"
+      redirect_to :back
     end
-    redirect_to :back
+
   end
 
   def edit
     @comment = Comment.find(params[:id])
     redirect_to :back unless @comment.user == current_user
   end
-  
+
   def update
     comment = Comment.find(params[:id])
     if comment.update_attributes(params[:comment]) && comment.user == current_user
