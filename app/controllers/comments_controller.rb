@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
                           )
     comment.user = current_user
     if comment.save
-      respond_to do |format|
-        format.html {
-          render partial: 'display_comments', locals: {parent: comment.commentable}
-        }
+      if request.xhr?
+        render partial: 'display_comments', locals: {parent: comment.commentable}
+      else
+        redirect_to :back
       end
     else
       flash.now[:error] = "Unsuccessful comment attempt!"
