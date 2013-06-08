@@ -1,7 +1,3 @@
-###
-# Make Users
-###
-# require 'pry'
 require 'yaml'
 BRO = YAML.load_file('db/bronouns.yml')
 
@@ -38,6 +34,11 @@ class Bro
     BRO['bronames'].sample.gsub(' ', '_')
   end
 end
+
+
+###
+# Make Users
+###
 
 usernames = ["Mitch", "Jack", "Henry"]
 usernames.each do |username|
