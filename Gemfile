@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass'
-gem 'sqlite3'
+gem 'pg'
 gem 'nifty-generators'
 gem 'sunspot_rails'
 
@@ -13,6 +13,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
