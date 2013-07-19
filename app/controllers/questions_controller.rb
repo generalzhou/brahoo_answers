@@ -2,12 +2,7 @@ class QuestionsController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show]
 
   def index
-    if params[:search]
-      @search = Question.search { fulltext params[:search] }
-      @questions = @search.results
-    else
-      @questions = Question.paginate(:page => params[:page])
-    end
+    @questions = Question.paginate(:page => params[:page])
   end
 
   def new
@@ -19,12 +14,7 @@ class QuestionsController < ApplicationController
     question.update_attributes(best_answer_id: params[:question][:best_answer_id])
     redirect_to :back
   end
-
-  def search_terms
-    @search = Question.search { fulltext params[:query] }
-    render :json => @search.results.map(&:title)
-  end
-
+  
   def create
     @question = Question.new(params[:question])
     @question.user = current_user

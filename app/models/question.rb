@@ -16,15 +16,4 @@ class Question < ActiveRecord::Base
 
   self.per_page = 10
 
-  searchable do
-    text :tags do
-      tags.map(&:name)
-    end
-    text :title
-    text :user do
-      user.username
-    end
-    text :text
-  end
-
 end

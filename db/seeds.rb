@@ -3,7 +3,7 @@ require 'faker'
 class Factory
 
   def self.question_title
-    Faker::Lorem.sentence
+    Faker::Lorem.sentence(2)[0..-2] + '?'
   end
 
   def self.question_text
@@ -19,11 +19,11 @@ class Factory
   end
 
   def self.username
-  	Faker::Name.name
+  	Faker::Name.first_name
   end
 
   def self.tags
-  	Faker::Lorem.word
+  	5.times.map { Faker::Lorem.word }
   end
 end
 
