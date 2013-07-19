@@ -1,3 +1,5 @@
+require 'faker'
+
 class Factory
 
   def self.question_title
