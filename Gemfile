@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+csource 'https://rubygems.org'
 ruby "1.9.3"
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass'
@@ -21,10 +21,10 @@ group :test, :development do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'shoulda-matchers'
-  gem 'faker'
   gem 'sunspot_solr'
 end
 
+gem 'faker'
 gem 'jquery-rails'
 gem 'twitter-typeahead-rails'
 
