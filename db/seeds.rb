@@ -1,37 +1,27 @@
-require 'yaml'
-BRO = YAML.load_file('db/bronouns.yml')
-
-class Bro
+class Factory
 
   def self.question_title
-    lead = ['Should', 'Can', "Will"].sample
-    person = ['I', 'bros', 'you', 'my brosephs'].sample
-    verb = BRO['verbs'].sample
-    [lead,person,verb].join(' ') + '?'
+    Faker::Lorem.sentence
   end
 
   def self.question_text
-    lead = ['How', 'Where', 'What', 'When'].sample
-    q = ['can','should', 'will','would'].sample
-    verb = BRO['verbs'].sample
-    adjective = BRO['brahjectives'].sample
-    noun = (BRO['nouns'] + BRO['events']).sample
-    [lead, q, 'I', verb, adjective, noun].join(' ') + '?'
+  	Faker::Lorem.paragraph(2)
   end
 
   def self.answer(username)
-    greeting = BRO['greetings'].sample
-    bronoun = [BRO['bronouns'].sample, username].sample
-    brahverb = BRO['brahverbs'].sample
-    "#{greeting.capitalize}, #{bronoun.downcase}. #{brahverb}"
+  	Faker::Lorem.paragraph(2)
   end
 
   def self.comment
-    BRO['brahverbs'].sample
+  	Faker::Lorem.sentence
   end
 
   def self.username
-    BRO['bronames'].sample.gsub(' ', '_')
+  	Faker::Name.name
+  end
+
+  def self.tags
+  	Faker::Lorem.word
   end
 end
 
@@ -48,8 +38,8 @@ usernames.each do |username|
 end
 
 12.times do
-  User.create(username: Bro.username,
-              email:    Bro.username.downcase+"@gmail.com",
+  User.create(username: Factory.username,
+              email:    Factory.username.downcase+"@gmail.com",
               password: "password" )
 end
 
@@ -61,8 +51,8 @@ users = User.all
 ###
 
 30.times do
-  Question.create(title: Bro.question_title,
-                  text:  Bro.question_text,
+  Question.create(title: Factory.question_title,
+                  text:  Factory.question_text,
                   user:  users.sample)
 end
 
@@ -75,7 +65,7 @@ end
   question = Question.all.sample
   Answer.create(question_id: question.id,
                 user_id:     users.sample.id,
-                text:        Bro.answer(question.user.username))
+                text:        Factory.answer(question.user.username))
 end
 
 commentable = Answer.all + Question.all
@@ -86,7 +76,7 @@ commentable = Answer.all + Question.all
 ###
 
 180.times do
-  Comment.create(text: Bro.comment,
+  Comment.create(text: Factory.comment,
                  user_id: users.sample.id)
 end
 
@@ -97,8 +87,7 @@ comments = Comment.all
 # Make Tags
 ###
 
-tag_names = ["bro", "brah", "broheim", "brotastic", "bromeggedon", "wwbsd"]
-tags = tag_names.map { |name| Tag.create(name: name) }
+tags = Factory.tags.map { |name| Tag.create(name: name) }
 
 
 ###

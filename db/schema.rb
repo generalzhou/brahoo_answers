@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20130605160432) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
+    t.integer  "user_id",     :null => false
     t.string   "text",        :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -54,12 +55,12 @@ ActiveRecord::Schema.define(:version => 20130605160432) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",        :null => false
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
-    t.string   "image"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "username",                                   :null => false
+    t.string   "email",                                      :null => false
+    t.string   "password_digest",                            :null => false
+    t.string   "image",           :default => "default.png"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "votes", :force => true do |t|
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20130605160432) do
     t.datetime "updated_at",    :null => false
   end
 
+  add_index "votes", ["user_id", "voteable_id", "voteable_type"], :name => "index_votes_on_user_id_and_voteable_id_and_voteable_type", :unique => true
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end
